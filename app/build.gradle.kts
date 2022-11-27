@@ -31,6 +31,9 @@ dependencies {
 
     // Threetenabp
     implementation("com.jakewharton.threetenabp:threetenabp:1.2.3")
+    
+    // for jar
+    implementation("org.jetbrains.kotlin:kotlin-stdlib")
 }
 
 application {
@@ -41,4 +44,16 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+// for   ./gradlew jar 
+val jar by tasks.getting(Jar::class) {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    configurations["runtimeClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    manifest {
+        attributes["Main-Class"] = "net.deskplate.datesample.App"
+    }
 }
