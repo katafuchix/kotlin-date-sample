@@ -15,3 +15,10 @@
 $ ./gradlew tasks  
 $ ./gradlew run
 ```
+
+## build
+
+```
+% ./gradlew jar
+% java -jar app/build/libs/app.jar
+```
