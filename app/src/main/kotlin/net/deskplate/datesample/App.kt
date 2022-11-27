@@ -97,8 +97,25 @@ class App {
         get() {
             return "Hello World!"
         }
+        
+        // java -jar app/build/libs/app.jarで実行する場合は Main-Class 内に Java main に相当するメソッドを設ける
+        companion object {
+            @JvmStatic
+            fun main(args: Array<String>) {
+                println(App().greeting)
+                println("2022-11-01T01:23:45.000+09:00".toDateISO_8601())
+                println("2022-11-01T01:23:45.000+09:00".toDateISO_8601().toYYYYMMDD())
+                println("2022-11-01T15:23:45.000+09:00".toDateISO_8601())
+                println("2022-11-01T15:23:45.000+09:00".toDateISO_8601().toYYYYMMDD())
+                println("2022-11-01T15:23:45.000+09:00".toZonedDateTime())
+                println("2022-11-01T15:23:45.000+09:00".toZonedDateTime().toLocalDate())
+                println("2022-11-01T15:23:45.000+09:00".toDateISO_8601().toMddE())
+                println("2022-11-01T15:23:45.000+09:00".toDateISO_8601().toHHmm())
+            }
+        }
 }
 
+// ./gradlew run  で実行する場合は fun main のみの記述
 fun main() {
     println(App().greeting)
 
