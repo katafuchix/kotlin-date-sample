@@ -4,7 +4,7 @@
 ## create gradle project 
 
 ```
-% make dir kotlin-date-sample
+% mkdir kotlin-date-sample
 % cd kotlin-date-sample
 % gradle init --type=kotlin-application  
 ```
